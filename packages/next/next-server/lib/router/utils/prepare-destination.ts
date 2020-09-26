@@ -62,7 +62,7 @@ export default function prepareDestination(
     // e.g. /something:hello(.*) -> /another/:hello is broken with validation
     // since compile validation is meant for reversing and not for inserting
     // params from a separate path-regex into another
-    { validate: false, encode: encodeURIComponent }
+    { validate: false, encode: encodeURI }
   )
   let newUrl
 
