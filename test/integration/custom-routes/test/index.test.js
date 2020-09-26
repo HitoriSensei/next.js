@@ -730,6 +730,20 @@ const runTests = (isDev = false) => {
             source: '/catchall-redirect/:path*',
             statusCode: 307,
           },
+          {
+            source: '/special-chars',
+            destination: 'http://somewhere/with%20special chars',
+            regex: normalizeRegEx('^\\/special-chars$'),
+            statusCode: 307,
+          },
+          {
+            regex: normalizeRegEx(
+              '^\\/special-chars-catchall(?:\\/((?:[^\\/]+?)(?:\\/(?:[^\\/]+?))*))?$'
+            ),
+            source: '/special-chars-catchall/:path*',
+            destination: 'http://somewhere/with%20special chars/:path*',
+            statusCode: 307,
+          },
         ],
         headers: [
           {
